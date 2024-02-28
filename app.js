@@ -1,42 +1,58 @@
-require('dotenv').config()
-const cors= require('cors')
-
-const express= require('express')
-
-const app = express()
-const port=5501
-const userRoute = require("./routes/userRoute")
-const questionRoute= require('./routes/questionRoute')
-const answerRoute= require('./routes/answerRoute')
+const express=require("express")
+const app=express()
+const cors=require("cors")
+port=3003
+require("dotenv").config();
 
 app.use(cors())
-//authentication middleware
-const authMiddleware= require('./middleware/authMiddleware')
 
- //db connection
- const dbConnection = require("./db/dbConfig")
 
- //json middleware to extract json data
+//user route middleware file
+const userRouter=require("./routs/userouts.js")
+
+//question route middleware file
+
+const questionRoute=require("./routs/questionrouts.js")
+
+//answer route middleware file
+const answerRoute=require("./routs/answerouts.js")
+
+//importing db connection instance
+const dbconnection=require("./db/dbconfig.js")
+//Authentication middleware
+const authMiddleware = require("./middleware/authMiddleware.js")
+
+//json middleware to etract jason data
 app.use(express.json())
 
-
 //user routes middleware
-app.use("/api/users",userRoute)
+app.use("/api/users",userRouter);
 
-//question route middleware
-app.use("/api/questions",authMiddleware, questionRoute)
-//answer route middleware
-app.use("/api/answers",authMiddleware, answerRoute)
+//question routes middleware
+app.use("/api/question", authMiddleware, questionRoute);
 
- async function start(){
-  try {
-    const result=await dbConnection.execute("select 'test'")
-    app.listen(port)
-     console.log("database connection established")
-     console.log(`listening on ${port}`)
-  } catch (error) {
-    console.log(error.message)
-  }
- }
- start()
+//answer routes middleware
+
+app.use("/api/answer",authMiddleware,answerRoute)
+
+
+
+
+
+
+async function start(){
+    try {
+        const result=await dbconnection.execute("select 'test' ")
+        console.log(result)
+         await app.listen(port);
+        console.log(`listening on ${port}`)
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+start()
+
+
 
