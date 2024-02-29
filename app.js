@@ -1,8 +1,15 @@
+require('dotenv').config()
+const cors= require('cors')
+
 const express= require('express')
+
 const app = express()
 const port=5501
 const userRoute = require("./routes/userRoute")
 const questionRoute= require('./routes/questionRoute')
+const answerRoute= require('./routes/answerRoute')
+
+app.use(cors())
 //authentication middleware
 const authMiddleware= require('./middleware/authMiddleware')
 
@@ -18,6 +25,8 @@ app.use("/api/users",userRoute)
 
 //question route middleware
 app.use("/api/questions",authMiddleware, questionRoute)
+//answer route middleware
+app.use("/api/answers",authMiddleware, answerRoute)
 
  async function start(){
   try {

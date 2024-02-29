@@ -1,10 +1,11 @@
 const mysql2 = require('mysql2');
 
+
 const dbConnection= mysql2.createPool({
-    user:"sinaf@2014",
-    database:"evangadi-forum-db",
+    user:process.env.USER,
+    database:process.env.DATABASE,
     host:"localhost",
-    password:"1492014@Cnaf",
+    password:process.env.PASSWORD,
     connectionLimit:10
 });
 // dbConnection.execute("select 'test' ",(err,result)=>{
