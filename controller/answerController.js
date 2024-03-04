@@ -5,7 +5,7 @@ async function postAnswer(req,res){
     if(!questionid || !userid || !answer){
        return res.status(400).json({msg:"please provide all required fields"})
     }
-
+//insert data into answers table
  try {
  await dbConnection.query("INSERT INTO answers (userid,questionid,answer) VALUES (?,?,?)",[userid,questionid,answer])
  return res.status(201).json({msg:"answer posted"})
