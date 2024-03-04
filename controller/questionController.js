@@ -20,7 +20,14 @@ async function allQuestion(req,res){
     
     try {
   
-     const [allquestion] = await dbConnection.query("SELECT questionid,userid,title,description from questions ")
+      const [allquestion] = await dbConnection.query(`
+      SELECT q.questionid, q.userid, q.title, q.description, u.username
+      FROM questions q
+      JOIN users u ON q.userid = u.userid
+      ORDER BY q.id DESC
+  `);
+
+ 
      return res.status(200).json({msg:"all question retrieved succesfully",allquestion})
      
     } catch (error) {

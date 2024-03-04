@@ -1,0 +1,80 @@
+/* landingStyles.css */
+
+/* Center the container horizontally and vertically */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+     
+  }
+  .container {
+    background-image: url('../../Images//bg-svg-f.svg');
+    background-size: cover; /* Adjust as needed */
+    background-position: center;
+        
+}
+  /* Styling for login container */
+  .login_container {
+    border: 2px solid #f9f7f7; /* Border color related to white */
+    padding: 20px;
+  }
+  
+ 
+  
+  /* Styling for links inside login container */
+  .login_container a {
+    color: orange;
+  }
+  
+  /* Input field styling */
+  .login_container input {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  /* Button styling */
+  .login_container button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Styling for about container */
+  .about_container {
+    width: 45%;
+    padding: 20px;
+  }
+  
+  /* Styling for text inside about container */
+  .about_container span {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Button styling inside about container */
+  .about_container button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Button hover effect */
+  .about_container button:hover {
+    background-color: darkorange;
+  }
+  
+  /* Styling for the link inside about container */
+  .about_container a {
+    color: blue;
+  }
+  
+  /* Altered size for h3 */
+  .about_container h3 {
+    font-size: 20px;
+  }
+  

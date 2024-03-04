@@ -1,52 +1,70 @@
-import Home from './Pages/Home'
-import Login from './Pages/Login'
-import Register from './Pages/Register'
-import {Routes,Route,useNavigate} from 'react-router-dom'
-import {useEffect,useState, createContext} from 'react'
-import axios from './axiosConfig'
+import React, { useEffect, useState, createContext } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import axios from './axiosConfig';
+import Home from './Pages/HomePage/Home';
+import Login from './Pages/LandingPage/Landing';
+import Register from './Pages/SignUpPage/SignUp';
+import PostQuestion from './Pages/AskQuestionPage/AskQuestion'
+import Answer from './Pages/QuestionDetailAndAnswerPage/QuestionDetailAndAnswer'
+import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
-export const AppState= createContext();
+
+export const AppState = createContext();
+
 function App() {
-  const [user,setuser] = useState({})
+  const [user, setUser] = useState({});
+  const [question, setQuestion] = useState({});
 
-  const token = localStorage.getItem('token')
-  
-  const navigate = useNavigate()
-async function checkUser(){
-  
-try {
-  const {data} = await axios.get('/users/check',{
-    headers: {
-      Authorization: 'Bearer ' + token,
-    },
-    
-  });
-  //  console.log(data)
-  setuser(data)
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
-} catch (error) {
-  // console.log(error.response)
-  navigate('/login')
-}
+  async function checkUser() {
+    try {
+      const { data } = await axios.get('/users/check', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+      // console.log(data)
+      setUser(data);
+    } catch (error) {
+      navigate('/');
+      
+    }
+  }
 
-}
+  async function getQuestion() {
+    try {
+      const { data } = await axios.get('/questions/all-questions', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+      // console.log(data)
+      setQuestion(data); // Assuming `data` holds the question value
+    } catch (error) {
+      
+      console.error('Error fetching question:', error);
+    }
+  }
 
-
-useEffect(()=>{
-checkUser();
-},[])
+  useEffect(() => {
+    checkUser();
+    getQuestion();
+  }, []); // Add token as a dependency
 
   return (
-    <AppState.Provider value={{user, setuser}}>
+    <AppState.Provider value={{ user, setUser, question, setQuestion }}>
+      <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={ <Login />} />
+        {user && <Route path='/home' element={<Home />} />}
+        <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
-      
-   
-    
+        <Route path='/postquestion' element={<PostQuestion />} />
+        <Route path='/answer' element={<Answer />} />
       </Routes>
-    
+      <Footer/>
     </AppState.Provider>
   );
 }
