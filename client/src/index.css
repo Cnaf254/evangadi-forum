@@ -4,3 +4,10 @@ background: #fe8402 !important;
 .nav-item a:hover{
 color:#fe8402 !important;
 }
+.landing{
+    height: 100vh;
+}
+.user-icon svg{
+    width: 100px;
+    height: 100px;
+}

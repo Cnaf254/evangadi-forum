@@ -53,39 +53,9 @@ function Header() {
   return (
     <section className={classes.header_container}>
 
-{/* <div> 
-        <img src={evangadiLogo} alt="evangadi-logo" />
-      </div>
-      {isMobile ? (
-        <div className={classes.menu_container}>
-          <div className={classes.menu_icon} onClick={toggleMenu}>
-            <AiOutlineMenu size={24} />
-          </div>
-          {isMenuOpen && (
-            <div className={classes.menu_items}>
-              <a href="/home" onClick={() => setIsMenuOpen(false)}>Home</a>
-              <a href="" onClick={() => setIsMenuOpen(false)}>How It Works</a>
-              {isLoggedIn ? (
-                <button onClick={handleButtonClick}>Logout</button>
-              ) : (
-                <button onClick={handleButtonClick}>Sign In</button>
-              )}
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className={classes.large}>
-          <Link to="/home">Home</Link>
-          <Link to="">How It Works</Link>
-          {isLoggedIn ? (
-            <button onClick={handleButtonClick}>Logout</button>
-          ) : (
-            <button onClick={handleButtonClick}>Sign In</button>
-          )}
-        </div>
-      )} */}
 
-<nav class="navbar p-3 navbar-expand-lg bg-body-tertiary">
+
+<nav class="navbar p-3 navbar-expand-lg ">
   <div class="container">
     <a class="navbar-brand" href="#"><img src={evangadiLogo} alt="evangadi-logo" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +64,7 @@ function Header() {
     <div class="collapse navbar-collapse justify-content-end fw-semibold " id="navbarNav">
       <ul class="navbar-nav"> 
         <li class="nav-item align-items-center d-flex">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li> 
         <li class="nav-item align-items-center d-flex"> 
           <a class="nav-link" href="#">How It Works </a>

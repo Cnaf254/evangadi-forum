@@ -2,8 +2,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from './axiosConfig';
 import Home from './Pages/HomePage/Home';
-import Login from './Pages/LandingPage/Landing';
-import Register from './Pages/SignUpPage/SignUp';
+import Landing from './Pages/LandingPage/Landing';
 import PostQuestion from './Pages/AskQuestionPage/AskQuestion'
 import Answer from './Pages/QuestionDetailAndAnswerPage/QuestionDetailAndAnswer'
 import Header from './Components/Header/Header'
@@ -56,15 +55,15 @@ function App() {
 
   return (
     <AppState.Provider value={{ user, setUser, question, setQuestion }}>
-      <Header />
+      
       <Routes>
         {user && <Route path='/home' element={<Home />} />}
-        <Route path='/' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/postquestion' element={<PostQuestion />} />
+        {user && <Route path='/postquestion' element={<PostQuestion />} />}
+        <Route path='/' element={<Landing />} />
+        
         <Route path='/answer' element={<Answer />} />
       </Routes>
-      <Footer/>
+      
     </AppState.Provider>
   );
 }

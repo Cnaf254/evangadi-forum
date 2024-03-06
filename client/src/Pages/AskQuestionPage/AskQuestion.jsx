@@ -26,6 +26,7 @@ function PostQuestion() {
     const tagValue = tagDom.current.value
     const questionid = uuidv4();
     const userid=user.userid
+    console.log(userid)
     
     if(!questionid || !userid || !titleValue || !descriptionValue || !tagValue){
       alert('please provide all required fields')
@@ -64,6 +65,10 @@ function PostQuestion() {
 
    return (
     <section>
+ 
+
+
+
      <div>
         <h1>Steps To Write A Good Questions</h1>
         <p>

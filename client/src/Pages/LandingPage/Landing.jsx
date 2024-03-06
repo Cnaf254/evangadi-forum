@@ -1,45 +1,20 @@
-import {useRef} from 'react'
-import axios from '../../axiosConfig'
-import {Link,useNavigate} from 'react-router-dom'
-import classes from './landing.module.css'
+import {useState} from 'react'
 
 
-function Login() {
-  const navigate=useNavigate()
-  const emailDom=useRef(null)
-  const passwordDom=useRef(null)
 
-  async function handleSubmit(e){
-    e.preventDefault();
-    
-    const emailValue = emailDom.current.value
-    const passwordValue = passwordDom.current.value
-    if( !emailValue || !passwordValue){
-      alert('please provide all required fields')
-      return;
-    }
-    
-  try {
-   const {data} = await axios.post('/users/login',{
-    
-    email:emailValue,
-    password:passwordValue
-   })
-   alert('register successfull please login')
-     navigate('/home')
-     window.location.reload();
-  localStorage.setItem("token",data.token)
-   console.log(data)
-  } catch (error) {
-    alert(error?.response?.data?.error)
-    console.log(error.response.data)
-  }
+import Header from '../../Components/Header/Header'
+import bg from '../../Images/bg-svg-f.svg'
+import SignUp  from '../../Components/SignUp/SignUp'
+import LogIn  from '../../Components/LogIn/LogIn'
+
+function Landing() {
+  const [currentPage,setCurrentPage]=useState("login")
   
-  }
 
   return (
-    <section className = {classes.container}>
-      <div className = {classes.login_container}>
+    <section >
+      <Header />
+      {/* <div className = {classes.login_container}>
         <h3>Log in to your account</h3>
        <span>
         Don't have an account?
@@ -69,10 +44,38 @@ function Login() {
        Commodi, alias qui sit ratione esse facere consequuntur omnis modi dicta odit earum eius aperiam, similique animi quaerat quae est possimus laudantium ipsam fuga repellat. Doloremque nulla illum consequatur repudiandae.</span>
       <br/>
        <button>HOW IT WORKS</button>
-      </div>
+      </div> */}
+      <main className="landing bg-body-tertiary" style={{background: `url(${bg})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+
+    <section className="container d-md-flex pt-5 gap-5">
+      
+        {/* form */}
+        {currentPage === "login" && < LogIn setCurrentPage={setCurrentPage}/>}
+        {currentPage === "signup" && < SignUp setCurrentPage={setCurrentPage}/>}
+        
+      
+ 
+      <div className="col mt-5">
+      {/* welcome */}
+<p className="text-warning fw-semibold">About</p>
+<h1 className="fw-bold">Evangadi Networks Q&A</h1>
+<div className="d-flex flex-column gap-4 fs-5">
+  <p>No matter what stage of life you are in, whether you're just starting elementary school or being promoted toCEO of a fortune 500 company, you have much to offer to those who are trying to follow in your footsteps.</p>
+  <p>wheather you are willing to share your knowledge or you are just looking to meet mentors of your own,please startby joining the netywork here</p>
+</div>
+<div>
+  <button className="btn text-white fw-bold py-2 px-5 mt-3" style={{backgroundColor:"#fe8402"}}>
+    HOW IT WORKS
+  </button>
+</div>
+ </div> 
+       
+    </section>
+
+      </main>
    
   </section>
   )
 }
 
-export default Login
+export default Landing
