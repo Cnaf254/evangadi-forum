@@ -24,7 +24,11 @@ async function allAnswer(req,res){
     try {
       
   
-     const [allanswer] = await dbConnection.query("SELECT answer from answers where questionid=?",[questionId])
+     const [allanswer] = await dbConnection.query(`SELECT users.username, answers.answer
+     FROM answers
+     JOIN users ON answers.userid = users.userid
+     WHERE answers.questionid = ?
+     `,[questionId])
      return res.status(200).json({msg:"all answer retrieved succesfully",allanswer})
      
     } catch (error) {

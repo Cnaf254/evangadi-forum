@@ -114,7 +114,7 @@ function Answer() {
   <div key={index}>
     <div>
       <div><BsPersonCircle/></div>
-      <small>{user.username}</small>
+      <small>{item.username}</small>
     </div>
     
     <div>{item.answer}</div>
@@ -134,7 +134,7 @@ function Answer() {
        </div>
 
        
-       <button type='submit'>Post Question</button>
+       <button type='submit'>Post Answer</button>
        
        
    </form>

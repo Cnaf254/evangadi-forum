@@ -15,7 +15,7 @@ async function register(req,res){
 
     const [user]= await dbConnection.query("SELECT username,userid from users where username=? or email=? ",[username,email])
    if(user.length>0){
-   return res.status(400).json({msg:"user already registered"})
+   return res.status(400).json({msg:"user already registered",user})
    }
    if(password.length<=8){
    return res.status(400).json({msg:"password must be atleast 8 characters"})
