@@ -1,18 +1,25 @@
-import {useRef} from 'react'
+import {useRef,useState} from 'react'
 import axios from '../../axiosConfig'
 import {Link,useNavigate} from 'react-router-dom'
 import {toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; 
 
 const LogIn = ({setCurrentPage}) => {
   const navigate=useNavigate()
   const emailDom=useRef(null)
   const passwordDom=useRef(null)
-
+  const [visible,setVisible]=useState(true)
+  
+  const togglePassword = () => {
+     setVisible(!visible)
+  }
   async function handleSubmit(e) {
     e.preventDefault();
   
     const emailValue = emailDom.current.value;
     const passwordValue = passwordDom.current.value;
+  
     
     if (!emailValue || !passwordValue) {
       toast.error('Please provide all required fields!', {
@@ -85,12 +92,26 @@ const LogIn = ({setCurrentPage}) => {
      <form onSubmit={handleSubmit} action="">
       <div className="d-flex flex-column gap-3">
        <input type="email" ref={emailDom} className="form-control p-3" placeholder='Email Address'/>
+       <div className="input-with-icon">
+      <input 
+        type={visible ? "text" : "password"} 
+        ref={passwordDom} 
+        className="form-control p-3 pass-icon" 
+        placeholder='Password'
+      />
+      <FontAwesomeIcon 
+        icon={visible ? faEye : faEyeSlash} 
+        onClick={togglePassword} 
+        className="fa-light icon-eye" 
+      />
+    </div>
+       
 
-       <input type="password" ref={passwordDom} className="form-control p-3" placeholder='Password'/> 
+       
       </div>
       <div className="mt-3">
         <p className="d-flex justify-content-end">
-          <a href="" className="fw-semibold text-decoration-none text-warning">Forgot Password</a>
+          <a href="#"  className="fw-semibold text-decoration-none text-warning">Forgot Password</a>
         </p>
       </div>
       <div className="d-grid">

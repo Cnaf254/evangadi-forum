@@ -4,13 +4,27 @@ background: #fe8402 !important;
 .nav-item a:hover{
 color:#fe8402 !important;
 }
-/* .landing{
-    height: 100vh;
-} */
-/* .answer{
-    height: 115vh;
-} */
+
 .user-icon svg{
     width: 80px;
     height: 80px;
 }
+/* .pass-icon{
+    padding-right: -1px;
+} */
+.input-with-icon {
+    position: relative;
+  }
+  
+  .input-with-icon input {
+    padding-right: 30px; /* Adjust the padding as needed */
+  }
+  
+  .input-with-icon .icon-eye {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust the right position as needed */
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  

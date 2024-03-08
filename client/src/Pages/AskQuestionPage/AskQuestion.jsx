@@ -6,6 +6,7 @@ import Header from "../../Components/Header/Header";
 import axios from "../../axiosConfig";
 import { v4 as uuidv4 } from "uuid";
 import {AppState} from "../../App";
+import {toast } from 'react-toastify';
 
 const AskQuestion = () => {
   const [message,setMessage]=useState("")
@@ -34,8 +35,18 @@ const AskQuestion = () => {
       !descriptionValue ||
       !tagValue
     ) {
-      alert("please provide all required fields");
-      return;
+      
+        toast.error('Please provide all required fields!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+         return;
     }
 
     try {

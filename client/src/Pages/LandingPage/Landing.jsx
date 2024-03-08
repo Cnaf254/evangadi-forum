@@ -7,6 +7,7 @@ import bg from '../../Images/bg-svg-f.svg'
 import SignUp  from '../../Components/SignUp/SignUp'
 import LogIn  from '../../Components/LogIn/LogIn'
 
+
 function Landing() {
   const [currentPage,setCurrentPage]=useState("login")
   
@@ -14,37 +15,7 @@ function Landing() {
   return (
     <section >
       <Header />
-      {/* <div className = {classes.login_container}>
-        <h3>Log in to your account</h3>
-       <span>
-        Don't have an account?
-        <Link to={'/register'}>Create a new account</Link>
-       </span>
-      <form onSubmit={handleSubmit} action="">
-     
-     
-     <div>
-       
-       <input type="text" ref={emailDom} placeholder='email'/>
-       </div>
-       <br/>
-     <div>
-        
-       <input type="text" ref={passwordDom} placeholder='password'/>
-       </div>
-       <button type='submit'>Login</button>
-   </form>
-   <Link to={'/register'}>Create an account?</Link>
-      </div>
-      <div className={classes.about_container}>
-       <span>About</span>
-       <h1>Evangadi Networks Q&A</h1>
-       <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, in assumenda. Nostrum consectetur dignissimos in quod voluptatibus. Ad eos hic deleniti quod minima! Quidem quam cupiditate aspernatur eius, perferendis repellendus?
-       Veritatis aut ea debitis commodi ipsum. Autem amet, beatae porro labore facilis voluptate ut temporibus repellendus pariatur dolorem velit aliquid nesciunt praesentium quas earum? Vitae quasi tenetur voluptate delectus repudiandae!
-       Commodi, alias qui sit ratione esse facere consequuntur omnis modi dicta odit earum eius aperiam, similique animi quaerat quae est possimus laudantium ipsam fuga repellat. Doloremque nulla illum consequatur repudiandae.</span>
-      <br/>
-       <button>HOW IT WORKS</button>
-      </div> */}
+      
       <main className="landing bg-body-tertiary" style={{background: `url(${bg})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
 
     <section className="container d-md-flex pt-5 gap-5">
@@ -52,6 +23,7 @@ function Landing() {
         {/* form */}
         {currentPage === "login" && < LogIn setCurrentPage={setCurrentPage}/>}
         {currentPage === "signup" && < SignUp setCurrentPage={setCurrentPage}/>}
+        
         
       
  

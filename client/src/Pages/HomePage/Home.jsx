@@ -37,16 +37,19 @@ function Home(props) {
   <Link className="text-decoration-none text-black" key={index} to={`/answer?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&questionid=${encodeURIComponent(item.questionid)}`}>
     <hr />
     <div className="d-flex justify-content-between align-items-center ">
-      
-      <div className="d-flex flex-column align-items-center gap-3">
+    <div class="d-flex flex-column flex-md-row gap-md-5">
+    <div className="d-flex flex-column gap-2">
         {/* user */}
         <div className="user-icon"><BsPersonCircle /></div>
         <div>{item.username}</div>
-      </div>
-      <div>
+      </div >
+      <div className="">
         {/* question */}
-        <p>{item.title}</p>
+        <p className="text-start mt-4">{item.title}</p>
       </div>
+</div>
+
+      
       <div>
         {/* arrow */}
         <FaGreaterThan/>
