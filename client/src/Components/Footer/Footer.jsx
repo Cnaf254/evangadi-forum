@@ -7,7 +7,7 @@ import { AiFillYoutube } from "react-icons/ai";
 import  './footer.css'
 function Footer() {
   return (
-    <div className="footer-top mt-5">
+    <div className="footer-top mt-1">
       <div className="container">
         <div className="footer-bottom-content clearfix">
           <div className="row">
@@ -44,22 +44,24 @@ function Footer() {
               </ul>
             </div>
             <div className="col-lg-4 col-md-4 ">
-              <h5>Useful Link</h5>
+              
               <ul className="list-menu">
+              <h5>Useful Link</h5>
                 <li>
-                  <a href="/explained">How it works </a>
+                  <a className="text-decoration-none" href="/explained">How it works </a>
                 </li>
                 <li>
-                  <a href="/legal/terms/">Terms of Service</a>
+                  <a className="text-decoration-none" href="/legal/terms/">Terms of Service</a>
                 </li>
                 <li>
-                  <a href="/legal/privacy/">Privacy policy</a>
+                  <a className="text-decoration-none" href="/legal/privacy/">Privacy policy</a>
                 </li>
               </ul>
             </div>
             <div className="col-lg-4 col-md-4">
-              <h5>Contact Info</h5>
+             
               <ul className="list-menu contact-list">
+              <h5 className="">Contact Info</h5>
                 <li>Evangadi Networks</li>
                 <li>support@evangadi.com</li>
                 <li>+1-202-386-2702</li>

@@ -63,7 +63,7 @@ function App() {
         
         <Route path='/answer' element={<Answer />} />
       </Routes>
-      
+      <Footer />
     </AppState.Provider>
   );
 }
