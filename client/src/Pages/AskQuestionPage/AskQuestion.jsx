@@ -10,6 +10,7 @@ import {toast } from 'react-toastify';
 
 const AskQuestion = () => {
   const [message,setMessage]=useState("")
+  
   const navigate = useNavigate();
   const {user} = useContext(AppState);
   console.log(user)
@@ -78,10 +79,31 @@ const AskQuestion = () => {
         window.location.reload();
       }, 2000);
     } catch (error) {
-      alert("something went wrong");
+      
+      toast.error('something went wrong', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       console.log(error.response);
     }
   }
+  useEffect(() => {
+    const reloaded = localStorage.getItem('reloaded');
+    if (reloaded) {
+      localStorage.removeItem('reloaded');
+      window.location.reload();
+    }
+  }, []);
+  
+
+  
+  
   return (
     <section>
       <Header />

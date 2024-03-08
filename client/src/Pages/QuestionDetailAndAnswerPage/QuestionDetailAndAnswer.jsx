@@ -69,13 +69,33 @@ const Answer = () => {
   }})
   answerDom.current.value = '';
    
-  alert('answer posted succesfully')
+  
+  toast.success('answer posted succesfully', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
   window.location.reload();
 
  
    
     } catch (error) {
-    alert(' something went wrong')
+    
+    toast.error('something went wrong', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     console.log(error.response)
   }
  
@@ -103,6 +123,10 @@ const Answer = () => {
   }  
   
   useEffect(() => {
+    if (queryParams.get('reload') === 'true' && localStorage.getItem('reloaded') === 'true') {
+      localStorage.removeItem('reloaded');
+      window.location.reload();
+    }
     getAnswer();
      }, []);
 

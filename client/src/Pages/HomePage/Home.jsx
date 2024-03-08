@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import {useContext,useState,useEffect} from 'react'
 import {AppState}  from '../../App'
 import { BsPersonCircle } from "react-icons/bs";
 import { FaGreaterThan } from "react-icons/fa";
@@ -11,21 +11,35 @@ import Header from '../../Components/Header/Header'
 
 function Home(props) {
   const navigate=useNavigate()
+  const [load,setLoad]=useState(true)
 
  
   const {user} = useContext(AppState)
   const {question} = useContext(AppState)
- 
+  const [reloaded, setReloaded] = useState(false);
 
-  // console.log(question)
-  // console.log(question)
+  const handleLinkClick = () => {
+    if (!reloaded) {
+      localStorage.setItem('reloaded', 'true');
+      setReloaded(true);
+    }
+  };
+ 
+  
+    
+   
+  
   return (
     <>
     <Header />
     <section className="bg-body-tertiary">
    
    <div className="d-flex justify-content-around pt-5 ">
-    <button onClick={() => navigate('/postquestion')} className="btn btn-primary action-btn px-5">
+    <button onClick={() =>{
+      localStorage.setItem('reloaded', 'true');
+      navigate('/postquestion')
+      
+    } } className="btn btn-primary action-btn px-5">
     Ask Question
     </button>
     <p className="fw-semibold"><span className="text-warning">Welcome:</span>  {user.username}</p>
@@ -34,7 +48,7 @@ function Home(props) {
     <h2>Questions</h2>
 
     {question.allquestion && question.allquestion.map((item, index) => (
-  <Link className="text-decoration-none text-black" key={index} to={`/answer?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&questionid=${encodeURIComponent(item.questionid)}`}>
+  <Link onClick={handleLinkClick} className="text-decoration-none text-black" key={index} to={`/answer?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&questionid=${encodeURIComponent(item.questionid)}&reload=true`}>
     <hr />
     <div className="d-flex justify-content-between align-items-center ">
     <div class="d-flex flex-column flex-md-row gap-md-5">
@@ -63,33 +77,7 @@ function Home(props) {
 
 
 
-    {/* <div>
-<Link to={"/postquestion"}><button   >Ask Question</button></Link>
-  
-  <h2>Welcome: {user.username}</h2>
-</div>
-<div>
-  
  
-  {question.allquestion && question.allquestion.map((item, index) => (
-    
-  <div key={index}>
-    <div>
-      <div><BsPersonCircle/></div>
-      <small>{item.username}</small>
-    </div>
-    
-    <Link to={`/answer?title=${encodeURIComponent(item.title)}&description=${encodeURIComponent(item.description)}&questionid=${encodeURIComponent(item.questionid)}`}>
-              <p>{item.title}</p>
-            </Link>
-
-    <div><FaGreaterThan/></div>
-    <br/>
-  </div>
-))}
-
-  
-</div>  */}
       
       
 

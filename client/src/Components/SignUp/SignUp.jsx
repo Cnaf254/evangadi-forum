@@ -3,6 +3,8 @@ import { useRef,useState } from 'react'
 import axios from '../../axiosConfig'
 import {Link,useNavigate} from 'react-router-dom'
 import {toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; 
 
 const SignUp = ({setCurrentPage}) => {
   
@@ -12,6 +14,11 @@ const SignUp = ({setCurrentPage}) => {
     const lastnameDom= useRef(null)
     const emailDom= useRef(null)
     const passwordDom= useRef(null)
+    const [visible,setVisible]=useState(true)
+  
+    const togglePassword = () => {
+       setVisible(!visible)
+    }
   
   
   
@@ -130,7 +137,19 @@ const SignUp = ({setCurrentPage}) => {
       </div>
       <input ref={usernameDom} type="text" className="form-control p-3" placeholder='User Name'/>
 
-      <input ref={passwordDom} type="password" className="form-control p-3" placeholder='Password'/> 
+      <div className="input-with-icon">
+      <input 
+        type={visible ? "text" : "password"} 
+        ref={passwordDom} 
+        className="form-control p-3 pass-icon" 
+        placeholder='Password'
+      />
+      <FontAwesomeIcon 
+        icon={visible ? faEye : faEyeSlash} 
+        onClick={togglePassword} 
+        className="fa-light icon-eye" 
+      />
+    </div> 
      </div>
      <div className="p-3">
         <small>I agree to the privacy policy and terms of service.</small>
