@@ -68,7 +68,7 @@ const SignUp = ({setCurrentPage}) => {
     email:emailValue,
     password:passwordValue
    })
-    // console.log(data)
+    console.log(data)
   
   
    toast.success(data?.msg, {
@@ -82,10 +82,11 @@ const SignUp = ({setCurrentPage}) => {
     theme: "light",
     
     });
-   navigate('/')
+  //  navigate('/login')
+  setCurrentPage("login")
   } catch (error) {
     
-    //  console.log(error.response.data)
+     console.log(error.response.data)
     
 
     if(error?.response?.data?.user?.length > 0){
@@ -156,7 +157,7 @@ const SignUp = ({setCurrentPage}) => {
      </div>
      
      <div className="d-grid">
-       <button type="submit" className="btn btn-primary action-btn fs-5 fw-semibold">Agree and Join</button>
+       <button  type="submit" className="btn btn-primary action-btn fs-5 fw-semibold">Agree and Join</button>
      </div>
      <div className="mt-3">
        <p className="d-flex justify-content-center">

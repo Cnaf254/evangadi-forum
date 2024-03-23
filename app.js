@@ -40,4 +40,3 @@ app.use("/api/answers",authMiddleware, answerRoute)
  }
  start()
 
-

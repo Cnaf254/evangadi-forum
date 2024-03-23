@@ -64,7 +64,10 @@ function Header() {
     <div class="collapse navbar-collapse justify-content-end fw-semibold " id="navbarNav">
       <ul class="navbar-nav"> 
         <li class="nav-item align-items-center d-flex">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <Link  onClick={()=>{navigate('/home')
+            
+            window.location.reload()
+        }} class="nav-link active" aria-current="page" >Home</Link>
         </li> 
         <li class="nav-item align-items-center d-flex"> 
           <a class="nav-link" href="#">How It Works </a>

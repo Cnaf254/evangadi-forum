@@ -3,6 +3,7 @@
 import { AiFillFacebook } from "react-icons/ai";
 import { TiSocialInstagram } from "react-icons/ti";
 import { AiFillYoutube } from "react-icons/ai";
+import evangadiFooterLogo from '../../Images/evangadi-logo.png'
 
 import  './footer.css'
 function Footer() {
@@ -15,8 +16,8 @@ function Footer() {
               <div className="logo-footer">
                 <a className="navbar-brand" href="/">
                   <img
-                    src="https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-home.png"
-                    alt="evangadi logo"
+                    src={evangadiFooterLogo}
+                    alt="evangadi footer logo"
                   />
                 </a>
                 
