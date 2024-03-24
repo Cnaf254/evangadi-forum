@@ -31,7 +31,7 @@ const SignUp = ({setCurrentPage}) => {
     const passwordValue = passwordDom.current.value
     if(!usernameValue || !firstnameValue || !lastnameValue || !emailValue || !passwordValue){
       toast.error('please provide all required fields!', {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -46,7 +46,7 @@ const SignUp = ({setCurrentPage}) => {
     // console.log(passwordValue.length)
     if(passwordValue.length<=8){
       toast.error('The password must be atleast 8', {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -72,7 +72,7 @@ const SignUp = ({setCurrentPage}) => {
   
   
    toast.success(data?.msg, {
-    position: "top-right",
+    position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -91,7 +91,7 @@ const SignUp = ({setCurrentPage}) => {
 
     if(error?.response?.data?.user?.length > 0){
       toast.error(error?.response?.data?.msg, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -107,7 +107,7 @@ const SignUp = ({setCurrentPage}) => {
 
 
     toast.error(error?.response?.data?.msg, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

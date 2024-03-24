@@ -38,7 +38,7 @@ const AskQuestion = () => {
     ) {
       
         toast.error('Please provide all required fields!', {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -81,7 +81,7 @@ const AskQuestion = () => {
     } catch (error) {
       
       toast.error('something went wrong', {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

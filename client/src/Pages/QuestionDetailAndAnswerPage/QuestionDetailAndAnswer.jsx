@@ -45,7 +45,7 @@ const Answer = () => {
     
     if(!questionid || !userid || !answerValue ){
       toast.error('Please provide all required fields!', {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -71,7 +71,7 @@ const Answer = () => {
    
   
   toast.success('answer posted succesfully', {
-    position: "top-right",
+    position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -87,7 +87,7 @@ const Answer = () => {
     } catch (error) {
     
     toast.error('something went wrong', {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

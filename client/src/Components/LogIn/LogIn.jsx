@@ -24,7 +24,7 @@ const LogIn = ({setCurrentPage}) => {
     
     if (!emailValue || !passwordValue) {
       toast.error('Please provide all required fields!', {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -43,7 +43,7 @@ const LogIn = ({setCurrentPage}) => {
       });
   
       toast.success(data.msg, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -59,7 +59,7 @@ const LogIn = ({setCurrentPage}) => {
     } catch (error) {
       if (error.response.status === 400 && error.response.data.error === "invalid credential") {
         toast.error("Invalid email or password!", {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -70,7 +70,7 @@ const LogIn = ({setCurrentPage}) => {
         });
       } else {
         toast.error("An error occurred. Please try again later!", {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
