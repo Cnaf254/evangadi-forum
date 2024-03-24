@@ -27,4 +27,6 @@ color:#fe8402 !important;
     transform: translateY(-50%);
     cursor: pointer;
   }
-  
+  .home{
+    padding-top: 100px !important;
+  }

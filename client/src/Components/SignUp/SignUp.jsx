@@ -122,7 +122,7 @@ const SignUp = ({setCurrentPage}) => {
   }
 
   return (
-    <div className="col card p-5 text-center">
+    <div className="col card p-5 text-center mt-5">
     <div>
      <h3 className="m-3">Join the network</h3>
      <p className="mb-5">Already have an account? <a href="#" onClick={()=>setCurrentPage("login")}className="fw-semibold text-decoration-none text-warning">Sign in</a></p>

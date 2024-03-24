@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 // import "../../index.css";
-import Header from "../../Components/Header/Header";
+
 
 import axios from "../../axiosConfig";
 import { v4 as uuidv4 } from "uuid";
@@ -105,9 +105,9 @@ const AskQuestion = () => {
   
   
   return (
-    <section>
-      <Header />
-      <div className="container d-flex flex-column align-items-center mt-4 ">
+    <section class="bg-light">
+     
+      <div className="container d-flex flex-column align-items-center home bg-light ">
         {/* steps and how to write Q  */}
         <div className="justify-content-around ">
           {/*  how to write Q  Title*/}
@@ -128,7 +128,7 @@ const AskQuestion = () => {
       <div className="d-flex flex-column align-items-center container  shadow-sm p-3 mb-5 bg-body rounded">
         <div className="mt-5 pt-4">
           {/* Ask Q Part */}
-          <div>
+          <div >
             <h3>Ask a Public question </h3>
           </div>
           <div className="align-items-center">

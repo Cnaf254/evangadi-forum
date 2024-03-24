@@ -55,7 +55,7 @@ function App() {
 
   return (
     <AppState.Provider value={{ user, setUser, question, setQuestion }}>
-      
+      <Header />
       <Routes>
         {user && <Route path='/home' element={<Home />} />}
         {user && <Route path='/postquestion' element={<PostQuestion />} />}

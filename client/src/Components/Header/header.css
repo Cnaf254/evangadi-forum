@@ -1,0 +1,11 @@
+.header_container {
+    width: 100vw;;
+    position: fixed !important;
+    background-color: #fff;
+   
+  z-index: 9999;
+  margin-top: 0px;
+   
+    
+  }
+  

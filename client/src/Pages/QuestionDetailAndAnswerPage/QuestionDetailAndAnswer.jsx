@@ -5,7 +5,7 @@ import React, { useRef, useState, useContext, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "../../axiosConfig.js";
 import { AppState } from "../../App.jsx";
-import Header from "../../Components/Header/Header.jsx";
+
 import { BsPersonCircle } from "react-icons/bs";
 import {toast } from 'react-toastify';
 
@@ -131,10 +131,10 @@ const Answer = () => {
      }, []);
 
   return (
-    <section>
-      <Header />
-      <div className="landing bg-body-tertiary  pt-3">
-        <div className="container   pt-3 ">
+    
+      
+      <div className="bg-body-tertiary home ">
+        <div className="container">
           {/* Question answer title and   answer */}
           <div className="">
             {/* top part */}
@@ -232,7 +232,7 @@ const Answer = () => {
           </div>
         </div>
       </div>
-    </section>
+    
   );
 };
 

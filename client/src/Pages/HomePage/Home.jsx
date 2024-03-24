@@ -3,7 +3,7 @@ import {AppState}  from '../../App'
 import { BsPersonCircle } from "react-icons/bs";
 import { FaGreaterThan } from "react-icons/fa";
 import {Link,useNavigate} from     'react-router-dom'
-import Header from '../../Components/Header/Header'
+
 
 // import axios from '../axiosConfig'
 
@@ -30,11 +30,11 @@ function Home(props) {
    
   
   return (
-    <>
-    <Header />
-    <section className="bg-body-tertiary">
+    
+    
+    <section className="bg-body-tertiary pt-5 home">
    
-   <div className="d-flex justify-content-around pt-5 ">
+   <div className="d-flex justify-content-around  ">
     <button onClick={() =>{
       localStorage.setItem('reloaded', 'true');
       navigate('/postquestion')
@@ -82,7 +82,7 @@ function Home(props) {
       
 
     </section>
-    </>
+    
   )
 }
 

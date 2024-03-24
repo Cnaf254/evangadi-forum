@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 
 
-import Header from '../../Components/Header/Header'
+
 import bg from '../../Images/bg-svg-f.svg'
 import SignUp  from '../../Components/SignUp/SignUp'
 import LogIn  from '../../Components/LogIn/LogIn'
@@ -13,12 +13,11 @@ function Landing() {
   
 
   return (
-    <section >
-      <Header />
+    
       
-      <main className="landing bg-body-tertiary" style={{background: `url(${bg})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+      <main className=" bg-body-tertiary pt-5" style={{background: `url(${bg})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
 
-    <section className="container d-md-flex pt-5 gap-5">
+    <section className="container d-md-flex  gap-5">
       
         {/* form */}
         {currentPage === "login" && < LogIn setCurrentPage={setCurrentPage}/>}
@@ -46,7 +45,7 @@ function Landing() {
 
       </main>
    
-  </section>
+  
   )
 }
 

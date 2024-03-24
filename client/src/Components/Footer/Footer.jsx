@@ -8,7 +8,7 @@ import evangadiFooterLogo from '../../Images/evangadi-logo.png'
 import  './footer.css'
 function Footer() {
   return (
-    <div className="footer-top mt-1">
+    <div className="footer-top mt-1 ">
       <div className="container">
         <div className="footer-bottom-content clearfix">
           <div className="row">

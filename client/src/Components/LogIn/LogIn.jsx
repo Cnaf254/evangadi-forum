@@ -4,6 +4,7 @@ import {Link,useNavigate} from 'react-router-dom'
 import {toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; 
+import './login.css'
 
 const LogIn = ({setCurrentPage}) => {
   const navigate=useNavigate()
@@ -84,7 +85,7 @@ const LogIn = ({setCurrentPage}) => {
   
 
   return (
-    <div className="col card p-5 text-center">
+    <div className="col card p-5 text-center mt-5" >
      <div>
       <h3 className="m-3">Login to your account</h3>
       <p className="mb-5">Don't have an account? <a href="#" onClick={()=>setCurrentPage("signup")}  className="fw-semibold text-decoration-none text-warning">Create a new account</a></p>

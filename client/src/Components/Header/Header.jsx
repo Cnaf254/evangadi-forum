@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppState } from "../../App";
 import evangadiLogo from "../../Images/evangadi-logo-header.png";
 import { AiOutlineMenu } from "react-icons/ai";
-import classes from './header.module.css';
+import './header.css';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,11 +51,11 @@ function Header() {
   };
 
   return (
-    <section className={classes.header_container}>
+    <section >
 
 
 
-<nav class="navbar p-3 navbar-expand-lg ">
+<nav class="navbar p-3 navbar-expand-lg  header_container">
   <div class="container">
     <a class="navbar-brand" href="#"><img src={evangadiLogo} alt="evangadi-logo" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
