@@ -34,12 +34,12 @@ function Home(props) {
     
     <section className="bg-body-tertiary pt-5 home">
    
-   <div className="d-flex justify-content-around  ">
+   <div className="d-flex justify-content-between align-items-center  ask p-2 pt-md-5">
     <button onClick={() =>{
       localStorage.setItem('reloaded', 'true');
       navigate('/postquestion')
       
-    } } className="btn btn-primary action-btn px-5">
+    } } className="btn btn-primary action-btn px-5 ">
     Ask Question
     </button>
     <p className="fw-semibold"><span className="text-warning">Welcome:</span>  {user.username}</p>
