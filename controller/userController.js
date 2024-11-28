@@ -1,4 +1,4 @@
-const dbconnection = require("../db/dbconfig.js");
+const dbconnection = require("../db/dbConfig.js");
 const bcrypt = require("bcrypt");
 const { StatusCodes } = require("http-status-codes");
 const jwt = require("jsonwebtoken");
@@ -72,14 +72,12 @@ async function logIn(req, res) {
     const token = jwt.sign({ username, userid }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    return res
-      .status(StatusCodes.OK)
-      .json({
-        msg: "user successfuly log in ",
-        token: token,
-        userName: username,
-        userid,
-      });
+    return res.status(StatusCodes.OK).json({
+      msg: "user successfuly log in ",
+      token: token,
+      userName: username,
+      userid,
+    });
   } catch (error) {
     console.log(error);
     return res
