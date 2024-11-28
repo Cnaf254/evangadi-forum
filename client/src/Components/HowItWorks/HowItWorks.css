@@ -1,0 +1,18 @@
+.how-it-works {
+    margin: 84px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.how-it-works h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.how-it-works-content h3 {
+    margin-top: 20px;
+}
+
+.how-it-works-content p {
+    margin: 10px 0;
+}

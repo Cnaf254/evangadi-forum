@@ -1,182 +1,59 @@
-.logo-footer .navbar-brand img {
-    width: auto;
-    position: relative;
-    top: -3px;
-  }
-  
-  .logo-footer a span {
-    color: #fff;
-    font-size: 24px;
-  }
-  .subscribe-form {
-    margin-top: 25px;
-  }
-  .list-social {
-    position: relative;
-    text-align: left;
-    margin-top: 25px;
-  }
-  
-  .list-social li {
-    display: inline-block;
-    margin-right: 12px;
-  }
-  .list-social li:last-child {
-    margin-right: 0;
-  }
-  
-  .list-social a {
-    color: #fff;
-    display: inline-block;
-    width: 38px;
-    text-align: center;
-    line-height: 38px;
-    border-radius: 50%;
-    border: 1px solid #fff;
+.footer {
+
+    background-color: #3B455A;
+}
+
+.title {
     font-size: 18px;
-    height: 38px;
-  }
-  
-  .list-social a:hover,
-  .list-social a:focus {
-    background-color: #fff;
-    color: #84b4fe;
-  }
-  
-  .footer-top {
-    padding: 60px 0 40px 0;
-    background-color: #3b455a;
-  }
-  
-  .footer-bottom {
-    background-color: #3b455a;
-    padding-bottom: 5px;
-  }
-  
-  .copyright {
-    text-align: left;
-  }
-  
-  .copyright p {
-    margin: 0px auto;
-    padding: 0px;
-    color: #8688a4;
-    line-height: 40px;
-    font-size: 14px;
-  }
-  
-  footer p.error-message {
-    color: #e10438;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  
-  footer p.sucess-message {
-    color: #4ec952;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  
-  .footer-inner span {
-    line-height: 45px;
-    font-size: 13px;
-  }
-  
-  #scrollUp {
-    background: #8ad62b;
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    bottom: 30px;
-    color: #ffffff;
-    height: 50px;
-    font-size: 30px;
-    line-height: 3;
-    right: 30px;
-    line-height: 50px;
+    color: #fff;
+}
+
+ul>li>a {
+    line-height: 1.4em;
     text-decoration: none;
-    text-align: center;
-    width: 50px;
-  }
-  
-  .text-footer {
-    margin-top: 10px;
-  }
-  
-  .text-footer p {
-    color: #a3a5b9;
-    color: rgba(213, 213, 213, 0.6);
-  }
-  
-  .footer-top h5 {
-    color: #fff;
-    font-size: 18px;
-  }
-  
-  .footer-top .list-menu a {
-    line-height: 28px;
-    color: rgba(213, 213, 213, 0.6);
-  }
-  
-  .footer-top .list-menu a:hover,
-  .footer-top .list-menu a:focus {
-    color: #fff;
-  }
-  
-  .list-contact li {
-    color: #adafc7;
-    line-height: 32px;
-  }
-  
-  .subscribe-form .form-control {
-    outline: none;
-    float: left;
-    height: 45px;
-    width: 65%;
-    color: #fff;
-    border-radius: 8px 0 0 8px;
-    -moz-border-radius: 8px 0 0 8px;
-    -wbekit-border-radius: 8px 0 0 8px;
-    padding: 0 15px 0 15px;
-    box-shadow: none;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    transition: all 0.3s;
-    background-color: #fff;
-    border: none;
-  }
-  
-  .subscribe-form .btn-subscribe {
-    position: relative;
-    margin-left: 0;
-    margin-top: 0;
-    height: 45px;
-    /* width: 100%; */
-    float: left;
-    border-radius: 0 8px 8px 0;
-    -moz-border-radius: 0 8px 8px 0;
-    -wbekit-border-radius: 0 8px 8px 0;
-    padding: 0 15px 0 15px;
-    color: #fff;
-    background: #fe8402;
-  }
-  ul {
+    color: lightgray;
+}
+
+ul {
     list-style: none;
-  }
-  li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-  }
-  .btn-subscribe:hover,
-  .btn-subscribe:focus,
-  .btn-subscribe:active {
-    background: #f18195;
-    color: #fff;
-  }
-  .contact-list li {
-    margin-bottom: 12px;
-    color: rgba(213, 213, 213, 0.6);
-    font-size: 16px;
-  }
-  
+}
+
+.net>li {
+    color: lightgray;
+    line-height: 1.4em;
+    padding-bottom: 10px;
+}
+
+.title,
+.net,
+.st {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.icons {
+    width: 235px;
+    font-size: 22px;
+
+}
+
+.fab {
+    color: white;
+}
+
+.footer_content {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.some {
+    padding-left: 130px !important;
+}
+
+.footer_logo>img {
+    margin-bottom: 20px;
+}
+
+.st>li {
+    padding-bottom: 3px;
+}

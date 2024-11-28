@@ -1,172 +1,169 @@
-import React from 'react'
-import { useRef,useState } from 'react'
-import axios from '../../axiosConfig'
-import {Link,useNavigate} from 'react-router-dom'
-import {toast } from 'react-toastify';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; 
+import React, { useState } from "react";
+import "./SignUp.css";
+import axios from "../axios.js";
 
-const SignUp = ({setCurrentPage}) => {
-  
-    const navigate=useNavigate()
-    const usernameDom= useRef(null)
-    const firstnameDom= useRef(null)
-    const lastnameDom= useRef(null)
-    const emailDom= useRef(null)
-    const passwordDom= useRef(null)
-    const [visible,setVisible]=useState(true)
-  
-    const togglePassword = () => {
-       setVisible(!visible)
-    }
-  
-  
-  
-  async function handleSubmit(e){
-    e.preventDefault();
-    const usernameValue = usernameDom.current.value
-    const firstnameValue = firstnameDom.current.value
-    const lastnameValue = lastnameDom.current.value
-    const emailValue = emailDom.current.value
-    const passwordValue = passwordDom.current.value
-    if(!usernameValue || !firstnameValue || !lastnameValue || !emailValue || !passwordValue){
-      toast.error('please provide all required fields!', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        
-        });
-      return;
-    }
-    // console.log(passwordValue.length)
-    if(passwordValue.length<=8){
-      toast.error('The password must be atleast 8', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        
-        });
-      return;
-    }
-   
-    
-  try {
-   const {data}=await axios.post('/users/register',{
-    username:usernameValue,
-    firstname:firstnameValue,
-    lastname:lastnameValue,
-    email:emailValue,
-    password:passwordValue
-   })
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
+function SignUp({ toggleForm }) {
+  const [errorResponse, setError] = useState("");
+
+  const [passwordVisible, setPasswordVisible] = useState(true);
+
+  const {
+    register,
+    trigger,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  async function onSubmit(data) {
     console.log(data)
-  
-  
-   toast.success(data?.msg, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    
-    });
-  //  navigate('/login')
-  setCurrentPage("login")
-  } catch (error) {
-    
-     console.log(error.response.data)
-    
+    reset();
 
-    if(error?.response?.data?.user?.length > 0){
-      toast.error(error?.response?.data?.msg, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        
-        });
-        return
-    }
-    
-
-
-    toast.error(error?.response?.data?.msg, {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      
+    try {
+      await axios.post("/users/register", {
+        username: data.username,
+        firstname: data.firstname,
+        lastname: data.lastname,
+        password: data.password,
+        email: data.email,
       });
+
+      toggleForm();
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.msg);
+    }
   }
-  
-  }
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
-    <div className="col card p-5 text-center mt-5">
-    <div>
-     <h3 className="m-3">Join the network</h3>
-     <p className="mb-5">Already have an account? <a href="#" onClick={()=>setCurrentPage("login")}className="fw-semibold text-decoration-none text-warning">Sign in</a></p>
+    <div className="login__container container col-sm-12 col-md">
+      <h4>Join the network </h4>
+      <p>
+        Already have an account?
+        <Link className="create" onClick={toggleForm}>
+          Sign in
+        </Link>
+      </p>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          type="text"
+          className={errors.email && "invalid"}
+          placeholder=" Your Email"
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            },
+          })}
+          onKeyUp={() => {
+            trigger("email");
+          }}
+        />
+
+        {errors.email && (
+          <div>
+            <small className="text-danger">{errors.email.message}</small>
+          </div>
+        )}
+        <input
+          className={`first-name ${errors.firstname && "invalid"}`}
+          type="text"
+          placeholder="First Name"
+          {...register("firstname", {
+            required: "First name  is required",
+          })}
+          onKeyUp={() => {
+            trigger("firstname");
+          }}
+        />
+
+        <input
+          className={`last-name ${errors.lastname && "invalid"}`}
+          type="text"
+          placeholder="Last Name"
+          {...register("lastname", {
+            required: "Last name is required",
+          })}
+          onKeyUp={() => {
+            trigger("lastname");
+          }}
+        />
+
+        <input
+          type={passwordVisible ? "password" : "text"}
+          className={` hide ${errors.password && "invalid"}`}
+          placeholder=" Your Password"
+          {...register("password", {
+            required: "Password is required",
+
+            minLength: {
+              value: 8,
+              message: "Minimum password length is 8",
+            },
+          })}
+          onKeyUp={() => {
+            trigger("password");
+          }}
+        />
+        <i onClick={togglePasswordVisibility}>
+          {passwordVisible ? (
+            <i className="fas fa-eye-slash" />
+          ) : (
+            <i className="fas fa-eye" />
+          )}
+        </i>
+        {errors.password && (
+          <div>
+            <small className="text-danger">{errors.password.message}</small>
+          </div>
+        )}
+        <input
+          type="text"
+          className={errors.username && "invalid"}
+          placeholder="User name"
+          {...register("username", {
+            required: "Username  is required",
+          })}
+          onKeyUp={() => {
+            trigger("username");
+          }}
+        />
+        {errors.username && (
+          <div>
+            <small className="text-danger">{errors.username.message}</small>
+          </div>
+        )}
+        {errorResponse && (
+          <div>
+            <small className="text-danger">{errorResponse}</small>
+          </div>
+        )}
+
+        <p>
+          I agree to the{" "}
+          <Link className="create" to="https://www.evangadi.com/legal/privacy/" target="_blank" >
+            privay policy
+          </Link>
+          {"  "}
+          and{"  "}
+          <Link className="create" to="https://www.evangadi.com/legal/terms/" target="_blank" >
+            terms of service.
+          </Link>
+        </p>
+        <button className="login__signInButton " type="submit">
+          Agree and Join
+        </button>
+      </form>
     </div>
-    <form onSubmit={handleSubmit} action="">
-     <div className="d-flex flex-column gap-3">
-      <input ref={emailDom} type="email" className="form-control p-3" placeholder='Email Address'/>
-
-      <div className="d-flex gap-4">
-      <input ref={firstnameDom} type="text" className="form-control p-3" placeholder='First Name'/> 
-
-      <input ref={lastnameDom} type="text" className="form-control p-3" placeholder='Last Name'/>
-      </div>
-      <input ref={usernameDom} type="text" className="form-control p-3" placeholder='User Name'/>
-
-      <div className="input-with-icon">
-      <input 
-        type={visible ? "text" : "password"} 
-        ref={passwordDom} 
-        className="form-control p-3 pass-icon" 
-        placeholder='Password'
-      />
-      <FontAwesomeIcon 
-        icon={visible ? faEye : faEyeSlash} 
-        onClick={togglePassword} 
-        className="fa-light icon-eye" 
-      />
-    </div> 
-     </div>
-     <div className="p-3">
-        <small>I agree to the privacy policy and terms of service.</small>
-     </div>
-     
-     <div className="d-grid">
-       <button  type="submit" className="btn btn-primary action-btn fs-5 fw-semibold">Agree and Join</button>
-     </div>
-     <div className="mt-3">
-       <p className="d-flex justify-content-center">
-         <a href="#" onClick={()=>setCurrentPage("login")} className="fw-semibold text-decoration-none text-warning">Already have an account?</a>
-       </p>
-     </div>
-    </form>
-   </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

@@ -1,0 +1,56 @@
+.container {
+    padding: 20px;
+}
+
+.homp {
+    margin-top: 84px;
+    text-align: center;
+}
+
+.hed {
+    padding-top: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qb {
+    background-color: #516CF0;
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.qb:hover {
+    background-color: #3A4DB7;
+}
+
+.wel {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.ns {
+    margin: 20px 0;
+    font-size: 1.5em;
+    color: #516CF0;
+    font-weight: bold;
+}
+
+.loading {
+    font-size: 1.5em;
+    color: #999;
+    margin-top: 50px;
+}
+
+.question:hover {
+    background-color: #FE8402;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}

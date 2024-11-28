@@ -1,11 +1,29 @@
-.header_container {
-    width: 100vw;;
-    position: fixed !important;
-    background-color: #fff;
-   
-  z-index: 9999;
-  margin-top: 0px;
-   
-    
-  }
-  
+.black {
+    color: black !important;
+}
+
+.link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #516CF0 !important;
+    width: 200px;
+    height: 40px;
+    /* margin-left:  30px; */
+
+}
+
+.btn:hover {
+    background-color: #FE8402 !important;
+    border: #FE8402 !important;
+}
+
+.navbar {
+    height: 80px;
+    z-index: 1;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+
+}

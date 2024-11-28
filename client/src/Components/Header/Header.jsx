@@ -1,93 +1,54 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
+import logo from "../../Images/evangadi-logo-header.png";
+import { Navbar, Container, Nav, NavbarToggle } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { AppState } from "../../App";
-import evangadiLogo from "../../Images/evangadi-logo-header.png";
-import { AiOutlineMenu } from "react-icons/ai";
-import './header.css';
+import "./Header.css";
+import { userProvider } from "../../Context/UserProvider";
 
-function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const { user, setUser } = useContext(AppState);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 760);
 
-  const handleButtonClick = () => {
-    if (isLoggedIn) {
-      logout();
-    } else {
-      navigate("/");
+function Header({logOut}) {
+  const [user,setUser]=useContext(userProvider)
+  
+  function handleButtonClick(){
+    if (user){
+      logOut()
     }
-  };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.setItem("token", "");
-    setIsLoggedIn(false);
-    navigate("/");
-  };
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setUser({});
-      setIsLoggedIn(true);
-    } else {
-      setUser(null);
-      setIsLoggedIn(false);
-    }
-  }, [setUser]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 760);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  }
 
   return (
-    <section >
-
-
-
-<nav class="navbar p-3 navbar-expand-lg  header_container">
-  <div class="container">
-    <a class="navbar-brand" href="#"><img src={evangadiLogo} alt="evangadi-logo" /></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end fw-semibold " id="navbarNav">
-      <ul class="navbar-nav"> 
-        <li class="nav-item align-items-center d-flex">
-          <Link  onClick={()=>{navigate('/home')
-            
-            window.location.reload()
-        }} class="nav-link active" aria-current="page" >Home</Link>
-        </li> 
-        <li class="nav-item align-items-center d-flex"> 
-          <a class="nav-link" href="#">How It Works </a>
-        </li>
-        <li class="nav-item align-items-center d-flex">
-          <a class="nav-link" href="#">
-          {isLoggedIn ? (
-                <button className="btn btn-primary fw-bold px-5 action-btn" onClick={handleButtonClick}>Logout</button>
-              ) : (
-                <button className="btn btn-primary fw-bold px-5 action-btn" onClick={handleButtonClick}>Sign In</button>
-              )}
-          </a>
-        </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    </section>
+    <Navbar expand="lg" className="navbar" fixed="top" variant="dark">
+      <Container>
+        <Navbar.Brand as={Link} to="/home">
+          <img src={logo} alt="Logo" className="navbar-logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          className="navbar-toggler-icon"
+        >
+          <span>
+            <i
+              className="fas fa-bars"
+              style={{ color: "black", fontSize: "2em" }}
+            ></i>
+          </span>
+        </Navbar.Toggle>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/home" className="black link">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/how-it-works" className="black link">
+              How it Works
+            </Nav.Link>
+          </Nav>
+          <Nav className="m-0 m-md-3">
+            <button className=" btn btn-success " onClick={handleButtonClick}>
+              {user.userName ? "Log Out" : "SIGN IN"}
+            </button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 

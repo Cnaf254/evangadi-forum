@@ -1,74 +1,52 @@
-// import React from "react";
-// import Logo from "../../assets/img/footerlogo.png";
-import { AiFillFacebook } from "react-icons/ai";
-import { TiSocialInstagram } from "react-icons/ti";
-import { AiFillYoutube } from "react-icons/ai";
-import evangadiFooterLogo from '../../Images/evangadi-logo.png'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from "../../Images/evangadi-logo.png";
+import "./Footer.css";
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
 
-import  './footer.css'
 function Footer() {
   return (
-    <div className="footer-top mt-1 ">
-      <div className="container">
-        <div className="footer-bottom-content clearfix">
-          <div className="row">
-            <div className="col-lg-4 col-md-4">
-              <div className="logo-footer">
-                <a className="navbar-brand" href="/">
-                  <img
-                    src={evangadiFooterLogo}
-                    alt="evangadi footer logo"
-                  />
-                </a>
-                
-              </div>
-
-              <ul className="footer-social-list list-social list-inline">
-                <li>
-                  <a href="https://www.facebook.com/EthiopiansNetwork">
-                    <AiFillFacebook />
-                    <i className="social_facebook "></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/evangaditech/">
-                    <TiSocialInstagram />
-                    <i className="social_instagram "></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/c/weareethiopians">
-                    <AiFillYoutube />
-                    <i className="social_youtube "></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-4 col-md-4 ">
-              
-              <ul className="list-menu">
-              <h5>Useful Link</h5>
-                <li>
-                  <a className="text-decoration-none" href="/explained">How it works </a>
-                </li>
-                <li>
-                  <a className="text-decoration-none" href="/legal/terms/">Terms of Service</a>
-                </li>
-                <li>
-                  <a className="text-decoration-none" href="/legal/privacy/">Privacy policy</a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-4 col-md-4">
-             
-              <ul className="list-menu contact-list">
-              <h5 className="">Contact Info</h5>
-                <li>Evangadi Networks</li>
-                <li>support@evangadi.com</li>
-                <li>+1-202-386-2702</li>
-              </ul>
-            </div>
+    <div className="footer ">
+      <div className="container some row">
+        <div className="footer_logo footer_content col-sm-12 col-md-4">
+          <img src={logo} alt="Evangadi Logo" />
+          <div className="row icons">
+            <Link className="col" to="https://www.facebook.com/evangaditech" target="_blank">
+              <i className="fab fa-facebook"></i>
+            </Link>
+            <Link className="col" to="">
+              <i className="fab fa-youtube"></i>
+            </Link>
+            <Link className="col" to="https://www.instagram.com/evangaditech/" target="_blank">
+              <i className="fab fa-instagram"></i>
+            </Link>
           </div>
+        </div>
+        <div className="col-sm-12 col-md-4 footer_content">
+          <h5 className="title">Useful Links</h5>
+          <ul className="st">
+            <li>
+              <Link to="/how-it-works">How it Works</Link>
+            </li>
+            <li>
+              <Link to="https://www.evangadi.com/legal/terms/" target="_blank">
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link to="https://www.evangadi.com/legal/privacy/" target="_blank">
+                Privacy Policy
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="col-sm-12 col-md-4 footer_content ">
+          <h5 className="title">Contact Info</h5>
+          <ul className="net">
+            <li>Evangadi Networks</li>
+            <li>support@evangadi.com</li>
+            <li>+1-202-386-2702</li>
+          </ul>
         </div>
       </div>
     </div>

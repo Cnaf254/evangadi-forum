@@ -1,70 +1,80 @@
-import React, { useEffect, useState, createContext } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import axios from './axiosConfig';
-import Home from './Pages/HomePage/Home';
-import Landing from './Pages/LandingPage/Landing';
-import PostQuestion from './Pages/AskQuestionPage/AskQuestion'
-import Answer from './Pages/QuestionDetailAndAnswerPage/QuestionDetailAndAnswer'
-import Header from './Components/Header/Header'
-import Footer from './Components/Footer/Footer'
-
-
-export const AppState = createContext();
-
+import Header from "./Components/Header/Header";
+import Landing from "./Components/Landing/Landing.jsx";
+import Footer from "./Components/Footer/Footer";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import HomePage from "./Components/HomePage/HomePage";
+import QuestionDetail from "./Components/QuestionDetail/QuestionDetail.jsx";
+import AskQuestion from "./Components/AskQuestion/AskQuestion";
+import SignUp from "./Components/SignUp/SignUp";
+import { UserProvider, userProvider } from "./Context/UserProvider";
+import axios from "./Components/axios";
+import { useContext, useEffect } from "react";
+import { QuestionContext } from "./Context/QuestionContext";
+import HowItWorks from "./Components/HowItWorks/HowItWorks";
+import  PrivateRoute  from "./Context/PrivateRoute.jsx";
 function App() {
-  const [user, setUser] = useState({});
-  const [question, setQuestion] = useState({});
-
-  const token = localStorage.getItem('token');
+  const { questions, setQuestions } = useContext(QuestionContext);
+  const [user, setUser] = useContext(userProvider);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  function logOut() {
+    setUser({});
+    localStorage.removeItem("token"); // Change to remove the token
+    navigate("/"); // Redirect to home or login page
+  }
 
   async function checkUser() {
     try {
-      const { data } = await axios.get('/users/check', {
+      const { data } = await axios.get("/users/check", {
         headers: {
-          Authorization: 'Bearer ' + token,
+          Authorization: "Bearer " + token,
         },
       });
-      // console.log(data)
-      setUser(data);
-    } catch (error) {
-      navigate('/');
-      
-    }
-  }
 
-  async function getQuestion() {
-    try {
-      const { data } = await axios.get('/questions/all-questions', {
+      setUser({ userName: data.username, userId: data.userid });
+
+      // get all questions
+      const res = await axios.get("/question/all_questions", {
         headers: {
-          Authorization: 'Bearer ' + token,
+          Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(data)
-      setQuestion(data); // Assuming `data` holds the question value
+      setQuestions(res.data.data);
     } catch (error) {
-      
-      console.error('Error fetching question:', error);
+      console.log(error);
+      navigate("/");
     }
   }
 
   useEffect(() => {
-    checkUser();
-    getQuestion();
-  }, []); // Add token as a dependency
+    if (token) {
+      checkUser();
+    } else {
+      navigate("/");
+    }
+  }, [token]);
 
   return (
-    <AppState.Provider value={{ user, setUser, question, setQuestion }}>
-      <Header />
+    <>
+      <Header logOut={logOut} />
       <Routes>
-        {user && <Route path='/home' element={<Home />} />}
-        {user && <Route path='/postquestion' element={<PostQuestion />} />}
-        <Route path='/' element={<Landing />} />
-        
-        <Route path='/answer' element={<Answer />} />
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/question/:questionid" element={<QuestionDetail />} />
+        <Route path="/ask" element={<AskQuestion />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
       </Routes>
       <Footer />
-    </AppState.Provider>
+    </>
   );
 }
 
